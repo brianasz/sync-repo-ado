@@ -12,7 +12,7 @@ variables:
   azureSubscription: 'c161fd03-32c0-4a00-918b-c6848e0728d1'
   
   # Web app name
-  webAppName: 'java-spring-boot'
+  webAppName: 'java-springboot-app-brianasz'
 
   # Agent VM image name
   vmImageName: 'ubuntu-latest'
