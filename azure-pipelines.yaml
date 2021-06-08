@@ -1,0 +1,9 @@
+steps:
+- bash: |
+   # Write your commands here
+   git fetch origin
+   git remote set-url --push origin https://github.com/brianasz/gs-spring-boot.git
+   git remote -v
+   git config --global user.email "brianasz@protonmail.com"
+   git config --global user.name "briana sanchez"
+  displayName: 'Bash Script'
