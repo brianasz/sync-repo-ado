@@ -1,5 +1,10 @@
 name: Synchronization Process
 
+trigger:
+  branches:
+    include:
+      - develop
+
 resources:
     repositories:
     - repository: adobeRepo
