@@ -1,18 +1,19 @@
 name: Synchronization Process
 
-#trigger:
-#  branches:
-#    include:
-#      - master
+trigger:
+  branches:
+    include:
+      - master
 
-resources:
-  repositories:
-  - repository: self
-    type: git
-    name: Java-SpringBoot-Mavent/Java-SpringBoot-Maven
-    ref: main
-    trigger:
-    - main
+#resources:
+#  repositories:
+#  - repository: self
+#    type: git
+#    name: Java-SpringBoot-Mavent/Java-SpringBoot-Maven
+#    ref: main
+#    trigger:
+#    - main
+
 jobs:
 - job: Sync_Job
   displayName: 'Synchronizing repositories'
@@ -28,14 +29,17 @@ jobs:
       git remote set-url origin https://$(System.AccessToken)@dev.azure.com/brianasz/Java-SpringBoot-Maven/_git/Java-SpringBoot-Maven
       git remote add --mirror=fetch adobeRepository https://brianasz:$PAT@github.com/brianasz/ado-testing.git
       git remote -v
-      git pull origin master
       git branch
+      git checkout $BRANCH
+      git branch
+      git pull origin master
       git push adobeRepository --all
     displayName: 'Sync Repostories'
     env:
       SYSTEM_ACCESSTOKEN: $(System.AccessToken)
       PAT: $(githubPat)
       BUILD: $(Build.BuildId)
+      BRANCH: $(Build.SourceBranchName)
 #    - bash: |
     # Write your commands here
 #    set -x
