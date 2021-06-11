@@ -13,7 +13,6 @@ jobs:
     clean: all
   steps:
   - checkout: self
-  - checkout: 
   - bash: |
       ls -l
       git remove -v
