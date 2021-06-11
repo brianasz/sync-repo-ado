@@ -1,6 +1,7 @@
 steps:
 - bash: |
    # Write your commands here
+   PAT=$(GITHUBPAT)
    ls -la
    git fetch origin
    git remote set-url --push origin https://github.com/brianasz/gs-spring-boot.git
