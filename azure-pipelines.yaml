@@ -1,11 +1,16 @@
+pool:
+  name: Azure Pipelines
+
 steps:
 - bash: |
    # Write your commands here
-   PAT=$(GITHUBPAT)
+   pat=$(github-pat)
    ls -la
+   git remote add --mirror=fetch adobeRepo https://brianasz:$pat@github.com/brianasz/gs-spring-boot.git
    git fetch origin
-   git remote set-url --push origin https://github.com/brianasz/gs-spring-boot.git
-   git remote -v
-   git config --global user.email "brianasz@protonmail.com"
-   git config --global user.name "briana sanchez"
-  displayName: 'Bash Script'
+   git push adobeRepo --all
+
+  displayName: 'Sync Repos'
+
+
+
