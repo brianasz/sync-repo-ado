@@ -4,8 +4,9 @@
 steps:
 - bash: |
    # Write your commands here
+   set -x
    ls -la
-   git remote add --mirror=fetch adobeRepo https://brianasz:$PAT@github.com/brianasz/gs-spring-boot.git
+   git remote add --mirror=fetch adobeRepo https://brianasz:$PAT@github.com/brianasz/ado-testing.git
    git push adobeRepo --all
   env:
       SYSTEM_ACCESSTOKEN: $(System.AccessToken)
