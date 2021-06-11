@@ -3,16 +3,7 @@ name: Synchronization Process
 trigger:
   branches:
     include:
-      - master
-
-#resources:
-#  repositories:
-#  - repository: self
-#    type: git
-#    name: Java-SpringBoot-Mavent/Java-SpringBoot-Maven
-#    ref: main
-#    trigger:
-#    - main
+      - develop
 
 jobs:
 - job: Sync_Job
@@ -20,7 +11,6 @@ jobs:
   workspace:
     clean: all
   steps:
-  - checkout: self
   - bash: |
       set -x
       ls -l
@@ -37,20 +27,3 @@ jobs:
       SYSTEM_ACCESSTOKEN: $(System.AccessToken)
       PAT: $(githubPat)
       BRANCH: $(Build.SourceBranchName)
-#    - bash: |
-    # Write your commands here
-#    set -x
-#    TIMESTAMP=`date +%Y-%m-%d_%H-%M-%S`
-#    ls -la
-#    git config --global user.email "brianasz@protonmail.com"
-#    git config --global user.name "Briana Sanchez"
-#    git remote add --mirror=fetch adobeRepo https://brianasz:$PAT@github.com/brianasz/ado-testing.git
-#    git checkout -b $BUILD
-#    git add *
-#    git commit -m "$TIMESTAMP - Syncronization Process"
-#    git push adobeRepo --all
-#    env:
-#        SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-#        PAT: $(githubPat)
-#        BUILD: $(Build.BuildId)
-#    displayName: 'Sync Repos'
