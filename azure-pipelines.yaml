@@ -1,33 +1,32 @@
-name: Syncronization Process
+name: Synchronization Process
 
 resources:
     repositories:
-    - repository: github
+    - repository: adobeRepo
       type: git
       name: brianasz/ado-testing
       endpoint: brianasz
 jobs:
-- job: Syncronizing repositories
-  displayName: Sync Job
+- job: Sync-Job
+  displayName: 'Synchronizing repositories'
   workspace:
     clean: all
-    steps:
-    - bash: |
+  steps:
+  - checkout: self
+#    - bash: |
     # Write your commands here
-    set -x
-    TIMESTAMP=`date +%Y-%m-%d_%H-%M-%S`
-    ls -la
-    git config --global user.email "brianasz@protonmail.com"
-    git config --global user.name "Briana Sanchez"
-    git remote add --mirror=fetch adobeRepo https://brianasz:$PAT@github.com/brianasz/ado-testing.git
-    git checkout -b $BUILD
-    git add *
-    git commit -m "$TIMESTAMP - Syncronization Process"
-    git push adobeRepo --all
-    env:
-        SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-        PAT: $(githubPat)
-        BUILD: $(Build.BuildId)
-    displayName: 'Sync Repos'
-
-  https://github.com/brianasz/ado-testing.git
+#    set -x
+#    TIMESTAMP=`date +%Y-%m-%d_%H-%M-%S`
+#    ls -la
+#    git config --global user.email "brianasz@protonmail.com"
+#    git config --global user.name "Briana Sanchez"
+#    git remote add --mirror=fetch adobeRepo https://brianasz:$PAT@github.com/brianasz/ado-testing.git
+#    git checkout -b $BUILD
+#    git add *
+#    git commit -m "$TIMESTAMP - Syncronization Process"
+#    git push adobeRepo --all
+#    env:
+#        SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+#        PAT: $(githubPat)
+#        BUILD: $(Build.BuildId)
+#    displayName: 'Sync Repos'
