@@ -16,10 +16,14 @@ jobs:
   - bash: |
       ls -l
       git remote -v
-      git remote add adobeRepository adobeRepo
+      git remote add adobeRepository https://brianasz:$PAT@github.com/brianasz/ado-testing.git
       git remote -v
       git fetch --all
     displayName: 'Sync Repostories'
+    env:
+      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+      PAT: $(githubPat)
+      BUILD: $(Build.BuildId)
 #    - bash: |
     # Write your commands here
 #    set -x
