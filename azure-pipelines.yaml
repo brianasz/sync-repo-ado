@@ -1,11 +1,11 @@
 name: Syncronization Process
 
 resources:
- repositories:
-     - repository: github
-       type: git
-       name: brianasz/ado-testing
-       endpoint: brianasz
+    repositories:
+    - repository: github
+      type: git
+      name: brianasz/ado-testing
+      endpoint: brianasz
 
 steps:
 - bash: |
