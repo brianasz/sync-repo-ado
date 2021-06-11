@@ -11,7 +11,7 @@ steps:
    git config --global user.name "Briana Sanchez"
    git remote add --mirror=fetch adobeRepo https://brianasz:$PAT@github.com/brianasz/ado-testing.git
    git add *
-   git commit -m "BUILD - Syncronization Process"
+   git commit -m "$BUILD-$TIMESTAMP - Syncronization Process"
    git push adobeRepo --all
   env:
       SYSTEM_ACCESSTOKEN: $(System.AccessToken)
