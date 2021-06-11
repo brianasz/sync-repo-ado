@@ -15,9 +15,9 @@ jobs:
   - checkout: self
   - bash: |
       ls -l
-      git remove -v
+      git remote -v
       git remote add adobeRepository adobeRepo
-      git remove -v
+      git remote -v
       git fetch --all
     displayName: 'Sync Repostories'
 #    - bash: |
