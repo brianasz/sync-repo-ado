@@ -27,6 +27,7 @@ jobs:
       git remote add --mirror=fetch adobeRepository https://brianasz:$PAT@github.com/brianasz/ado-testing.git
       git remote -v
       git pull origin master
+      git branch
       git push adobeRepository --all
     displayName: 'Sync Repostories'
     env:
