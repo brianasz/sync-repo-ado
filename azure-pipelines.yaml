@@ -19,6 +19,7 @@ jobs:
   steps:
   - checkout: self
   - bash: |
+      set -x
       ls -l
       git config --global user.email "brianasz@protonmail.com"
       git config --global user.name "Briana Sanchez"
