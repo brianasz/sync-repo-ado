@@ -1,6 +1,3 @@
-pool:
-  name: Azure Pipelines
-
 steps:
 - bash: |
    # Write your commands here
