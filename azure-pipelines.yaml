@@ -1,6 +1,12 @@
-#variables:
-#  system_accesstoken: $(System.AccessToken)
-  
+name: Syncronization Process
+
+resources:
+ repositories:
+     - repository: github
+       type: git
+       name: brianasz/ado-testing
+       endpoint: brianasz
+
 steps:
 - bash: |
    # Write your commands here
@@ -19,3 +25,5 @@ steps:
       PAT: $(githubPat)
       BUILD: $(Build.BuildId)
   displayName: 'Sync Repos'
+
+  https://github.com/brianasz/ado-testing.git
