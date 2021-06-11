@@ -3,7 +3,7 @@ name: Synchronization Process
 resources:
     repositories:
     - repository: adobeRepo
-      type: git
+      type: github
       name: brianasz/ado-testing
       endpoint: brianasz
 jobs:
