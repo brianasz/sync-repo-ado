@@ -1,13 +1,14 @@
+variables:
+  system_accesstoken: $(System.AccessToken)
+  
 steps:
 - bash: |
    # Write your commands here
-   PAT=$(githubPat)
    ls -la
    git remote add --mirror=fetch adobeRepo https://brianasz:$PAT@github.com/brianasz/gs-spring-boot.git
    git fetch origin
    git push adobeRepo --all
-
+  env:
+      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+      PAT: $(githubPat)
   displayName: 'Sync Repos'
-
-
-
