@@ -5,8 +5,11 @@ steps:
 - bash: |
    # Write your commands here
    set -x
+   TIMESTAMP=`date +%Y-%m-%d_%H-%M-%S`
    ls -la
    git remote add --mirror=fetch adobeRepo https://brianasz:$PAT@github.com/brianasz/ado-testing.git
+   git add *
+   git commit -m "TIMESTAMP - Syncronization Process"
    git push adobeRepo --all
   env:
       SYSTEM_ACCESSTOKEN: $(System.AccessToken)
