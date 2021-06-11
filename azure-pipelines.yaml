@@ -23,8 +23,8 @@ jobs:
       git config --global user.email "brianasz@protonmail.com"
       git config --global user.name "Briana Sanchez"
       git remote set-url origin https://$(System.AccessToken)@dev.azure.com/brianasz/Java-SpringBoot-Maven/_git/Java-SpringBoot-Maven
-      git remote -v
       git remote add adobeRepository https://brianasz:$PAT@github.com/brianasz/ado-testing.git
+      git remote set-url --push https://brianasz:$PAT@github.com/brianasz/ado-testing.git
       git remote -v
       git fetch --all
     displayName: 'Sync Repostories'
