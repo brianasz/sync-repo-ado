@@ -3,7 +3,7 @@ name: Synchronization Process
 trigger:
   branches:
     include:
-      - develop
+      - master
 
 jobs:
 - job: Sync_Job
@@ -14,9 +14,7 @@ jobs:
   - bash: |
       git remote set-url origin https://$(System.AccessToken)@dev.azure.com/brianasz/Java-SpringBoot-Maven/_git/Java-SpringBoot-Maven
       git remote add --mirror=fetch adobeRepository https://brianasz:$PAT@github.com/brianasz/ado-testing.git
-      git remote -v
       git checkout $BRANCH
-      git pull origin $BRANCH
       git push adobeRepository --all
     displayName: 'Sync Repostories'
     env:
