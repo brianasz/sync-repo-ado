@@ -17,7 +17,7 @@ jobs:
   steps:
   - bash: |
       git remote set-url origin https://$(System.AccessToken)@dev.azure.com/brianasz/Java-SpringBoot-Maven/_git/Java-SpringBoot-Maven
-      git remote add --mirror=fetch github https://$USERNAME:$PAT@github.com/brianasz/sync-repo-github.git
+      git remote add --mirror=fetch github https://$USERNAME:$PAT@github.com/brianasz/sync-repo-ado.git
       git checkout $BRANCH
       git push github $BRANCH:develop
     displayName: 'Sync Repostories'
