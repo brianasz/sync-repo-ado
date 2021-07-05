@@ -17,6 +17,7 @@ jobs:
   steps:
   - bash: |
       set -x
+      echo $BRANCH
       git remote set-url origin https://$(System.AccessToken)@dev.azure.com/brianasz/Java-SpringBoot-Maven/_git/Java-SpringBoot-Maven
       git remote add --mirror=fetch github https://$(USERNAME):$(ADOBEPATH)@github.com/brianasz/sync-repo-ado.git
       git checkout $BRANCH
