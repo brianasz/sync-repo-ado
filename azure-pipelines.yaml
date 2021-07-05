@@ -14,7 +14,7 @@ jobs:
       git fetch origin
       git fetch adobeRepository
       git checkout $BRANCH
-      git push adobeRepository master
+      git push adobeRepository master --all
     displayName: 'Sync Repostories'
     env:
       SYSTEM_ACCESSTOKEN: $(System.AccessToken)
