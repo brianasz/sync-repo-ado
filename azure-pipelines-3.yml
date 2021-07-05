@@ -16,10 +16,8 @@ jobs:
     clean: all
   steps:
   - bash: |
-      git remote set-url origin https://$(System.AccessToken)@dev.azure.com/f5eng/F5%20Portfolio/_git/f5-aem
-      git remote add --mirror=fetch AdobeRepository https://$(USERNAME):$(PASSWORD)@github.com/brianasz/ado-testing
-      git checkout $BRANCH
-      git push AdobeRepository --all
+      git clone https://$(username):$(password)@github.com/brianasz/ado-testing
+      ls -la
     displayName: 'Sync Repostories'
     env:
       SYSTEM_ACCESSTOKEN: $(System.AccessToken)
