@@ -10,14 +10,13 @@ jobs:
   steps:
   - bash: |
       git remote set-url origin https://$(System.AccessToken)@dev.azure.com/brianasz/Java-SpringBoot-Maven/_git/Java-SpringBoot-Maven
-      git remote add --mirror=fetch adobeRepository https://brianasz:$Password@github.com/brianasz/ado-testing.git
+      git remote add --mirror=fetch adobeRepository https://brianasz:$PAT@github.com/brianasz/ado-testing.git
       git fetch origin
       git fetch adobeRepository
       git checkout $BRANCH
-      git push adobeRepository develop
+      git push adobeRepository main
     displayName: 'Sync Repostories'
     env:
       SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-      PAT: $(githubPat)
-      Password: $(PASSWORD)
+      PAT: $(GITHUBPAT)
       BRANCH: $(Build.SourceBranchName)
