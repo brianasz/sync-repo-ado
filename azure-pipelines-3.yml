@@ -1,0 +1,26 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+
+jobs:
+- job: Sync_Job
+  displayName: 'Synchronizing repositories'
+  workspace:
+    clean: all
+  steps:
+  - bash: |
+      git remote set-url origin https://$(System.AccessToken)@dev.azure.com/f5eng/F5%20Portfolio/_git/f5-aem
+      git remote add --mirror=fetch AdobeRepository https://$(USERNAME):$(PASSWORD)@github.com/brianasz/ado-testing
+      git checkout $BRANCH
+      git push AdobeRepository --all
+    displayName: 'Sync Repostories'
+    env:
+      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+      BRANCH: $(Build.SourceBranchName)
