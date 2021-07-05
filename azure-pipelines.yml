@@ -25,4 +25,4 @@ jobs:
     displayName: 'Sync Repostories'
     env:
       SYSTEM_ACCESSTOKEN: $(System.AccessToken)
-      BRANCH: $(Build.SourceBranchName)
+      BRANCH: $(Build.SourceBranch)
