@@ -4,25 +4,25 @@
 # https://aka.ms/yaml
 
 trigger:
-- master
-
-resources:
-  repositories:
-  - repository: adobe
-    type: github
-    endpoint: github-username-password
-    name: brianasz/ado-testing
-    ref: main
+- release/*
 
 pool:
   vmImage: ubuntu-latest
 
-steps:
-- checkout: adobe
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+jobs:
+- job: Sync_Job
+  displayName: 'Synchronizing repositories'
+  workspace:
+    clean: all
+  steps:
+  - bash: |
+      git remote set-url origin https://$(System.AccessToken)@dev.azure.com/brianasz/Java-SpringBoot-Maven/_git/Java-SpringBoot-Maven
+      git remote add --mirror=fetch github https://$USERNAME:$PAT@github.com/brianasz/sync-repo-github.git
+      git checkout $BRANCH
+      git push github $BRANCH:develop
+    displayName: 'Sync Repostories'
+    env:
+      SYSTEM_ACCESSTOKEN: $(System.AccessToken)
+      BRANCH: $(Build.SourceBranchName)
+      PAT: $(adobePAT)
+      USERNAME: $(username)
